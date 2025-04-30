@@ -39,6 +39,14 @@ Estructura del proyectyo
 │   └── icons/                     # Íconos (opcional)
 
 
+reglas del login
+
+- El email debe ser único y tener un formato válido (a@ejemplo.com).
+- La contraseña debe tener al menos 4 caracteres, una mayúscula, un número y un carácter especial.
+    - ejemplo user: a@a.com password Qwer12#
+-cada vez que se cierre la app, se debe registrar el usuario nuevamente. (validar si conviene)
+
+
 
 Funcionalidades
 
@@ -64,3 +72,6 @@ Perfil	                             Pantalla de perfil del usuario actual (aunqu
 Responsive     	                     Ajustes visuales para tablets y pantallas grandes	                                            ⏳
 Validaciones    	                 Evitar agregar al carrito si stock == 0 	                                                    ⏳
 Persistencia (opcional)	             Guardar el carrito y usuario con SharedPreferences o SQLite                            	    ⏳
+
+Trabajos paralelos (opcional)	    Agregar productos(10) a la DB del profe(via postman/thunder client)                             ⏳
+                                    
