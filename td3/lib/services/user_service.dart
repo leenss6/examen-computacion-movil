@@ -1,23 +1,28 @@
 import '../models/user.dart';
 
 class UserService {
-  // Lista local para guardar los usuarios registrados
-  List<User> _registeredUsers = [];
+  // Crear instancia única
+  static final UserService _instance = UserService._internal();
 
-  // Método para registrar un nuevo usuario
+  factory UserService() {
+    return _instance;
+  }
+
+  UserService._internal();
+
+  // Lista de usuarios locales
+  final List<User> _registeredUsers = [];
+
+  // Métodos de registro y login
   String? register(String email, String password) {
-    // Validar si el email ya está registrado
     final userExists = _registeredUsers.any((user) => user.email == email);
     if (userExists) {
       return 'El email ya está registrado';
     }
-
-    // Registrar nuevo usuario
     _registeredUsers.add(User(email: email, password: password));
-    return null; // Registro exitoso (sin errores)
+    return null;
   }
 
-  // Método para hacer login
   String? login(String email, String password) {
     final user = _registeredUsers.firstWhere(
       (user) => user.email == email && user.password == password,
@@ -27,6 +32,6 @@ class UserService {
     if (user.email.isEmpty) {
       return 'Usuario o contraseña incorrectos';
     }
-    return null; // Login exitoso (sin errores)
+    return null;
   }
 }
