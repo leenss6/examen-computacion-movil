@@ -7,6 +7,8 @@ import 'screens/cart_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
+import 'widgets/top_bar.dart';
+import 'widgets/bottom_nav_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,58 +40,39 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   int _currentIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
 
-  final List<Widget> _screens = [
-    HomeScreen(),
-    CategoryScreen(),
-    CartScreen(),
-    ProfileScreen(),
-  ];
+  late List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      HomeScreen(searchController: _searchController),
+      CategoryScreen(),
+      CartScreen(),
+      ProfileScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tienda Flutter'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Aquí puedes abrir una pantalla de notificaciones o mostrar un mensaje
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('No hay notificaciones nuevas')),
-              );
-            },
-          ),
-        ],
+      appBar: TopBar(
+        searchController: _searchController,
+        onSearchChanged: (value) {
+          // Puedes usar Provider, o setState si el widget lo admite
+        },
       ),
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            _searchController.clear();
           });
         },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Categorías',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Carrito',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
       ),
     );
   }

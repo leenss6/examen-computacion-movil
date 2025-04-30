@@ -72,6 +72,5 @@ Perfil	                             Pantalla de perfil del usuario actual (aunqu
 Responsive     	                     Ajustes visuales para tablets y pantallas grandes	                                            ⏳
 Validaciones    	                 Evitar agregar al carrito si stock == 0 	                                                    ⏳
 Persistencia (opcional)	             Guardar el carrito y usuario con SharedPreferences o SQLite                            	    ⏳
-
 Trabajos paralelos (opcional)	    Agregar productos(10) a la DB del profe(via postman/thunder client)                             ⏳
                                     
