@@ -57,11 +57,10 @@ Estructura	                        Proyecto organizado por carpetas (models, ser
 Navegación	                        BottomNavigationBar (Home, Categoría, Carrito, Perfil)	                                        ✅
 Navegación	                         TopAppBar con botón de notificaciones	                                                        ✅
 Estado	                             CartService y UserService como Singleton (persistencia en ejecución)	                        ✅
-Buscador	                         Agregar campo de búsqueda por nombre/categoría en el AppBar	                                ⏳
+Buscador	                         Agregar campo de búsqueda por nombre/categoría en el AppBar	                                ⏳   (en desarrollo) Luis
 Categorías	                         Pantalla con botones para filtrar productos por categoría (ropa, electrónica, videojuegos)	    ⏳
 Total	                             Mostrar el total a pagar en la pantalla del carrito	                                        ⏳  
 Perfil	                             Pantalla de perfil del usuario actual (aunque sea estática/local)	                            ⏳
 Responsive     	                     Ajustes visuales para tablets y pantallas grandes	                                            ⏳
 Validaciones    	                 Evitar agregar al carrito si stock == 0 	                                                    ⏳
-Persistencia (opcional)	             Guardar el carrito y usuario con SharedPreferences o SQLite                            	    ⏳                             	    ⏳
-
+Persistencia (opcional)	             Guardar el carrito y usuario con SharedPreferences o SQLite                            	    ⏳
