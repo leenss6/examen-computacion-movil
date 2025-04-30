@@ -1,1 +1,67 @@
-Hola Hola.
+Estructura del proyectyo
+
+/lib
+├── main.dart                      # Entry point de la aplicación 
+├── models/                        # Modelos de datos (POJO) 
+│   ├── user.dart                  # Modelo de Usuario (email, password) 
+│   ├── product.dart               # Modelo de Producto (id, nombre, precio, imagen, stock local) 
+│   ├── category.dart              # Modelo de Categoría (id, nombre)    
+│   └── cart_item.dart             # Modelo de ítem del carrito (id, producto, cantidad) 
+├── repositories/                  # Repositorios (acceso a datos) 
+├── services/                      # Lógica de negocio y acceso a datos
+│   ├── auth_service.dart          # Lógica de autenticación (login, registro) 
+│   ├── api_service.dart           # Conexión con API de productos (GET productos) 
+│   ├── user_service.dart          # Lógica local de usuarios (login, registro) 
+│   ├── cart_service.dart          # Gestión del carrito de compras (añadir, eliminar, comprar) 
+│   └── stock_service.dart         # Control del stock local de productos (añadir, eliminar) 
+├── screens/                       # Pantallas principales
+│   ├── login_screen.dart          # Pantalla de login  
+│   ├── register_screen.dart       # Pantalla de registro 
+│   ├── home_screen.dart           # Home (productos) 
+│   ├── category_screen.dart       # Filtro por categoría 
+│   ├── cart_screen.dart           # Carrito de compras 
+│   ├── profile_screen.dart        # Perfil del usuario 
+│   └── product_detail_screen.dart # Detalle del producto 
+├── widgets/                       # Componentes reutilizables 
+│   ├── product_card.dart          # Tarjeta de producto en el listado de productos 
+│   ├── bottom_nav_bar.dart        # Barra de navegación inferior (Home, Categorías, Carrito, Perfil) 
+│   ├── top_bar.dart               # Barra superior (búsqueda + notificaciones) 
+│   ├── category_button.dart       # Botón para categorías (chip) 
+│   └── confirmation_dialog.dart   # Diálogo de confirmación para eliminar productos del carrito 
+├── providers/                     # (Opcional) Manejo de estados compartidos 
+│   ├── cart_provider.dart         # Estado del carrito de compras (productos, total)
+│   └── user_provider.dart         # Estado del usuario logueado 
+├── helpers/                       # Funciones utilitarias y helpers
+│   ├── validators.dart            # Validaciones (email, password) 
+│   └── navigation_helper.dart     # Ayuda para navegar entre pantallas 
+/assets/                           # Recursos de la app
+│   ├── images/                    # Imágenes (logo, etc.)
+│   └── icons/                     # Íconos (opcional)
+
+
+
+Funcionalidades
+
+Módulo	                                     Funcionalidad	                                                                       Estado
+Autenticación	                    Registro de usuarios local con validaciones                    	                                ✅
+Autenticación	                    Login local con validaciones                                   	                                ✅
+Productos	                        Consumir productos desde API con autenticación básica          	                                ✅
+Productos	                        Mostrar listado dinámico desde la API	                                                        ✅
+Detalle	                            Ver detalle del producto (imagen, precio, descripción, stock)	                                ✅
+Carrito	                            Agregar productos desde pantalla de detalle	                                                    ✅
+Carrito	                            Ver productos en carrito	                                                                    ✅
+Carrito	                            Eliminar productos del carrito (con confirmación)	                                            ✅  
+Carrito	                            Comprar: validar stock, simular envío de correo y vaciar carrito	                            ✅
+Backend	                            Autenticación básica para consumir API (test:test2023)	                                        ✅
+Estructura	                        Proyecto organizado por carpetas (models, services, screens, widgets)	                        ✅
+Navegación	                        BottomNavigationBar (Home, Categoría, Carrito, Perfil)	                                        ✅
+Navegación	                         TopAppBar con botón de notificaciones	                                                        ✅
+Estado	                             CartService y UserService como Singleton (persistencia en ejecución)	                        ✅
+Buscador	                         Agregar campo de búsqueda por nombre/categoría en el AppBar	                                ⏳
+Categorías	                         Pantalla con botones para filtrar productos por categoría (ropa, electrónica, videojuegos)	    ⏳
+Total	                             Mostrar el total a pagar en la pantalla del carrito	                                        ⏳  
+Perfil	                             Pantalla de perfil del usuario actual (aunque sea estática/local)	                            ⏳
+Responsive     	                     Ajustes visuales para tablets y pantallas grandes	                                            ⏳
+Validaciones    	                 Evitar agregar al carrito si stock == 0 	                                                    ⏳
+Persistencia (opcional)	             Guardar el carrito y usuario con SharedPreferences o SQLite                            	    ⏳                             	    ⏳
+
