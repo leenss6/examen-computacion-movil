@@ -4,29 +4,30 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController searchController;
   final Function(String) onSearchChanged;
 
-  TopBar({required this.searchController, required this.onSearchChanged});
+  const TopBar({required this.searchController, required this.onSearchChanged, super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.white,
       title: TextField(
         controller: searchController,
         onChanged: onSearchChanged,
         decoration: InputDecoration(
           hintText: 'Buscar productos...',
           border: InputBorder.none,
-          hintStyle: TextStyle(color: const Color.fromARGB(179, 3, 3, 3)),
-          icon: Icon(Icons.search, color: const Color.fromARGB(255, 0, 0, 0)),
+          hintStyle: TextStyle(color: Color.fromARGB(179, 3, 3, 3)),
+          icon: Icon(Icons.search, color: Colors.black),
         ),
-        style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
-        cursorColor: const Color.fromARGB(255, 0, 0, 0),
+        style: TextStyle(color: Colors.black),
+        cursorColor: Colors.black,
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.notifications),
+          icon: Icon(Icons.notifications, color: Colors.black),
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('No hay notificaciones nuevas')),
+              const SnackBar(content: Text('No hay notificaciones nuevas')),
             );
           },
         ),
@@ -35,5 +36,5 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
