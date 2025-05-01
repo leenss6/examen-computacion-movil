@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/cart_service.dart';
 import '../models/cart_item.dart';
+import 'package:intl/intl.dart';
+
 
 class CartScreen extends StatefulWidget {
   @override
@@ -9,6 +11,9 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   final CartService _cartService = CartService();
+  double _calcularTotal() {
+  return _cartService.items.fold(0, (total, item) => total + (item.product.price * item.quantity));
+}
 
   void _removeItem(CartItem item) async {
     final confirm = await showDialog<bool>(
@@ -101,13 +106,23 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
                 Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Total a pagar: \$${NumberFormat('#,###', 'es_CL').format(_calcularTotal().round())}",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton.icon(
                     onPressed: _purchase,
                     icon: Icon(Icons.payment),
                     label: Text('Comprar Todo'),
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50), // Botón grande
+                      minimumSize: Size(double.infinity, 50),
                     ),
                   ),
                 ),
