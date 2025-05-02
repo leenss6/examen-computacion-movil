@@ -20,14 +20,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tienda Flutter',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: LoginScreen(), // Empezamos desde Login
       routes: {
         '/login': (context) => LoginScreen(),
         '/register': (context) => RegisterScreen(),
-        '/home': (context) => MainApp(), // MainApp incluye el BottomNavigationBar
+        '/home':
+            (context) => MainApp(), // MainApp incluye el BottomNavigationBar
       },
     );
   }
