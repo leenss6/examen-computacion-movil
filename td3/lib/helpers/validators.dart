@@ -12,7 +12,7 @@ class Validators {
     return null; // Sin errores
   }
 
-  // Validar Password (mínimo 8 caracteres, 1 mayúscula, 1 número)
+  // Validar Password (mínimo 4 caracteres, 1 mayúscula, 1 número)
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'La contraseña es obligatoria';

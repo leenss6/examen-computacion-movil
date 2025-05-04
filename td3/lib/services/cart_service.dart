@@ -1,8 +1,9 @@
 import '../models/cart_item.dart';
 import '../models/product.dart';
+import 'stock_service.dart';
 
 class CartService {
-  //Singleton
+  // Singleton
   static final CartService _instance = CartService._internal();
   factory CartService() => _instance;
   CartService._internal();
@@ -15,7 +16,6 @@ class CartService {
     final index = _items.indexWhere((item) => item.product.id == product.id);
 
     if (index != -1) {
-      // Ya existe en el carrito, aumenta cantidad
       _items[index].quantity++;
     } else {
       _items.add(CartItem(product: product));
@@ -33,14 +33,18 @@ class CartService {
   // Validar stock y realizar compra simulada
   List<String> purchase() {
     List<String> messages = [];
+    final stockService = StockService();
 
     _items.removeWhere((item) {
-      if (item.quantity > item.product.stock) {
-        messages.add('${item.product.name} sin stock suficiente.');
+      final product = item.product;
+      final availableStock = stockService.getStock(product);
+
+      if (item.quantity > availableStock) {
+        messages.add('${product.name} sin stock suficiente.');
         return true; // eliminar del carrito
       } else {
-        // Reducir stock disponible
-        item.product.stock -= item.quantity;
+        // Reducir stock mediante StockService
+        stockService.reduceStock(product, item.quantity);
         return false;
       }
     });

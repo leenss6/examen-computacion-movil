@@ -36,7 +36,7 @@ class Product {
       imageUrl: json['product_image'],
       description: json['product_state'] ?? '',
       category: category,
-      stock: 5,
+      stock: 0,
     );
   }
 }
