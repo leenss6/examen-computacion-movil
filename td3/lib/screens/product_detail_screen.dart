@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../services/cart_service.dart';
+import '../services/user_service.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
 
-  const ProductDetailScreen({Key? key, required this.product}) : super(key: key);
+  const ProductDetailScreen({Key? key, required this.product})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),
-      ),
+      appBar: AppBar(title: Text(product.name)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -63,10 +63,15 @@ class ProductDetailScreen extends StatelessWidget {
             // Botón de agregar al carrito
             Center(
               child: ElevatedButton.icon(
-               onPressed: () {
+                onPressed: () {
                   CartService().addToCart(product); // Agregar al carrito
+                  UserService().addProductToCurrentUser(
+                    product.name,
+                  ); // Agregar al historial de compras
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('${product.name} agregado al carrito')),
+                    SnackBar(
+                      content: Text('${product.name} agregado al carrito'),
+                    ),
                   );
                 },
                 icon: Icon(Icons.add_shopping_cart),

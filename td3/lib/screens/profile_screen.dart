@@ -71,4 +71,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
     );
   }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loadUser(); // Vuelve a cargar el usuario al regresar
+  }
 }

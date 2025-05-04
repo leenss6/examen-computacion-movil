@@ -51,4 +51,14 @@ class UserService {
   Future<void> logout() async {
     _currentUser = null;
   }
+
+  void addProductToCurrentUser(String product) {
+    if (_currentUser != null) {
+      _currentUser = User(
+        email: _currentUser!.email,
+        password: _currentUser!.password,
+        products: [..._currentUser!.products, product],
+      );
+    }
+  }
 }
