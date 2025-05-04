@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      'Productos:',
+                      'Historial de compras:',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
