@@ -60,7 +60,7 @@ class _MainAppState extends State<MainApp> {
       appBar: TopBar(
         searchController: _searchController,
         onSearchChanged: (value) {
-          // Puedes usar Provider, o setState si el widget lo admite
+          
         },
       ),
       body: _screens[_currentIndex],
