@@ -1,7 +1,7 @@
 import '../models/user.dart';
 
 class UserService {
-  // Crear instancia única
+  // Instancia única (singleton)
   static final UserService _instance = UserService._internal();
 
   factory UserService() {
@@ -10,19 +10,24 @@ class UserService {
 
   UserService._internal();
 
-  // Lista de usuarios locales
+  // Lista de usuarios registrados localmente
   final List<User> _registeredUsers = [];
 
-  // Métodos de registro y login
+  // Usuario actualmente logueado
+  User? _currentUser;
+
+  // 🔹 Registro de usuario
   String? register(String email, String password) {
     final userExists = _registeredUsers.any((user) => user.email == email);
     if (userExists) {
       return 'El email ya está registrado';
     }
+
     _registeredUsers.add(User(email: email, password: password));
     return null;
   }
 
+  // 🔹 Login de usuario
   String? login(String email, String password) {
     final user = _registeredUsers.firstWhere(
       (user) => user.email == email && user.password == password,
@@ -32,6 +37,18 @@ class UserService {
     if (user.email.isEmpty) {
       return 'Usuario o contraseña incorrectos';
     }
+
+    _currentUser = user; // ✅ Se guarda como usuario actual
     return null;
+  }
+
+  // 🔹 Obtener el usuario actualmente logueado
+  Future<User?> getCurrentUser() async {
+    return _currentUser;
+  }
+
+  // 🔹 Cerrar sesión
+  Future<void> logout() async {
+    _currentUser = null;
   }
 }
