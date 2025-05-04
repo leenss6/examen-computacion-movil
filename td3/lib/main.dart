@@ -49,7 +49,7 @@ class _MainAppState extends State<MainApp> {
     super.initState();
     _screens = [
       HomeScreen(searchController: _searchController),
-      CategoryScreen(),
+      CategoryScreen(searchController: _searchController),
       CartScreen(),
       ProfileScreen(),
     ];
