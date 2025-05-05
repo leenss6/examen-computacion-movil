@@ -57,7 +57,9 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopBar(
+      appBar: _currentIndex == 3
+        ? null
+        : TopBar(
         searchController: _searchController,
         onSearchChanged: (value) {
           // Puedes usar Provider, o setState si el widget lo admite
