@@ -39,51 +39,63 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Iniciar Sesión'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              // Campo de Email
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: 'Email'),
-                validator: Validators.validateEmail,
-              ),
-              SizedBox(height: 16),
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Iniciar Sesión'),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // Campo de Email
+            TextFormField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(labelText: 'Email'),
+              validator: Validators.validateEmail,
+            ),
+            SizedBox(height: 16),
 
-              // Campo de Password
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(labelText: 'Contraseña'),
-                validator: Validators.validatePassword,
-              ),
-              SizedBox(height: 24),
+            // Campo de Password
+            TextFormField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(labelText: 'Contraseña'),
+              validator: Validators.validatePassword,
+            ),
+            SizedBox(height: 24),
 
-              // Botón Login
-              ElevatedButton(
-                onPressed: _login,
-                child: Text('Ingresar'),
-              ),
-              SizedBox(height: 16),
+            // Botón Login
+            ElevatedButton(
+              onPressed: _login,
+              child: Text('Ingresar'),
+            ),
+            SizedBox(height: 16),
 
-              // Botón para ir a Registro
-              TextButton(
-                onPressed: _navigateToRegister,
-                child: Text('¿No tienes cuenta? Regístrate'),
+            // Botón para ir a Registro
+            TextButton(
+              onPressed: _navigateToRegister,
+              child: Text('¿No tienes cuenta? Regístrate'),
+            ),
+
+            SizedBox(height: 32),
+
+            // Logo
+            Center(
+              child: Image.asset(
+                'lib/assets/ER.png', 
+                height: 100,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
