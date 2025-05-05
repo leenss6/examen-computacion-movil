@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../services/cart_service.dart';
-import '../services/user_service.dart';
+
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
@@ -65,9 +65,9 @@ class ProductDetailScreen extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   CartService().addToCart(product); // Agregar al carrito
-                  UserService().addProductToCurrentUser(
-                    product.name,
-                  ); // Agregar al historial de compras
+                 // UserService().addProductToCurrentUser(
+                  //  product.name,
+                  //); // Agregar al historial de compras
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('${product.name} agregado al carrito'),

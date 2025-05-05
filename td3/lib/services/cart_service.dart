@@ -1,14 +1,18 @@
 import '../models/cart_item.dart';
 import '../models/product.dart';
 import 'stock_service.dart';
+import '../services/user_service.dart';
 
 class CartService {
+  
   // Singleton
   static final CartService _instance = CartService._internal();
   factory CartService() => _instance;
   CartService._internal();
 
+  
   final List<CartItem> _items = [];
+  
 
   List<CartItem> get items => _items;
 
@@ -51,6 +55,9 @@ class CartService {
 
     if (messages.isEmpty) {
       messages.add('¡Compra realizada con éxito! Correo enviado al cliente.');
+      for (final item in _items) {
+        UserService().addProductToCurrentUser(item.product.name);
+      } // Agregar al historial de compras
       clearCart();
     }
 

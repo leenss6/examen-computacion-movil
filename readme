@@ -18,7 +18,6 @@ Estructura del proyectyo
 │   ├── login_screen.dart          # Pantalla de login  
 │   ├── register_screen.dart       # Pantalla de registro 
 │   ├── home_screen.dart           # Home (productos) 
-│   ├── category_screen.dart       # Filtro por categoría 
 │   ├── cart_screen.dart           # Carrito de compras 
 │   ├── profile_screen.dart        # Perfil del usuario 
 │   └── product_detail_screen.dart # Detalle del producto 
@@ -28,9 +27,6 @@ Estructura del proyectyo
 │   ├── top_bar.dart               # Barra superior (búsqueda + notificaciones) 
 │   ├── category_button.dart       # Botón para categorías (chip) 
 │   └── confirmation_dialog.dart   # Diálogo de confirmación para eliminar productos del carrito 
-├── providers/                     # (Opcional) Manejo de estados compartidos 
-│   ├── cart_provider.dart         # Estado del carrito de compras (productos, total)
-│   └── user_provider.dart         # Estado del usuario logueado 
 ├── helpers/                       # Funciones utilitarias y helpers
 │   ├── validators.dart            # Validaciones (email, password) 
 │   └── navigation_helper.dart     # Ayuda para navegar entre pantallas 

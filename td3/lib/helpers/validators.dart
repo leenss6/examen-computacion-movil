@@ -18,7 +18,7 @@ class Validators {
       return 'La contraseña es obligatoria';
     }
     if (value.length < 4) {
-      return 'Debe tener al menos 8 caracteres';
+      return 'Debe tener al menos 4 caracteres';
     }
     if (!RegExp(r'[A-Z]').hasMatch(value)) {
       return 'Debe tener al menos una letra mayúscula';
